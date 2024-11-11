@@ -1,6 +1,9 @@
+// handles/handleMessage.js
 const path = require('path');
 const sendMessage = require('./sendMessage');
-const commands = require(path.resolve(__dirname, '../commands')); // Chemin absolu pour éviter les erreurs de module introuvable
+const commands = require(path.join(__dirname, '../commands')); // Référence dynamique au dossier commands
+
+// ... (reste du code)
 
 function execute(command, args, senderId) {
   if (commands[command]) {
