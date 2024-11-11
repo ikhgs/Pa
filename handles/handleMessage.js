@@ -1,5 +1,6 @@
+const path = require('path');
 const sendMessage = require('./sendMessage');
-const commands = require('../commands'); // Le répertoire des commandes
+const commands = require(path.resolve(__dirname, '../commands')); // Chemin absolu pour éviter les erreurs de module introuvable
 
 function execute(command, args, senderId) {
   if (commands[command]) {
@@ -10,7 +11,6 @@ function execute(command, args, senderId) {
 }
 
 function onchat(senderId, message) {
-  // Recherche une commande avec une fonction "onchat"
   for (const commandName in commands) {
     const command = commands[commandName];
     if (command.onchat) {
